@@ -1,0 +1,16 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /data
+  static_dir: data
+- url: /static
+  static_dir: static
+
+- url: /.*
+  script: main.app
+
+libraries:
+- name: numpy
+  version: "1.6.1"

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+	<meta charset=utf-8 />
+	<title>CEFA Hourly Fire Danger</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script> -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
+	<!-- <script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script> -->
+	<!-- <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' /> -->
+	<!-- <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script> -->
+	<!-- <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' /> -->
+</head>
+
+<body>
+	<link rel='stylesheet' type='text/css' href='/static/style.css'>
+
+	<div id='map'></div>
+    <div class='map-overlay' id='legend'></div>
+
+	<!-- <div class='map-overlay top'> -->
+	<!-- <div class='map-overlay-inner'> -->
+	<!-- <h1>CEFA/CWA Experimental California Hourly Fire Danger</h1> -->
+	<!-- <div class='map-legend'> -->
+	<!-- </div> -->
+	<!-- </div> -->
+
+	<script src='{{ url_for("static", filename="mapbox_gl.js") }}'></script>
+	<script>
+		mapInit();
+	</script>
+</body>
+</html>
