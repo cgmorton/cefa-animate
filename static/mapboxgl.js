@@ -11,8 +11,12 @@ function mapInit() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2dtb3J0b24iLCJhIjoiY2luNmM3d3V4MGVuendrbHV2OW5wN3RuaSJ9.rjjVnT1cLUI2VwUm8yprSQ';
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v9',
-        // style: 'mapbox.streets',
+        // style: 'mapbox://styles/mapbox/basic',
+        // style: 'mapbox://styles/mapbox/streets',
+        // style: 'mapbox://styles/mapbox/bright',
+        // style: 'mapbox://styles/mapbox/light',
+        // style: 'mapbox://styles/mapbox/dark',
+        style: 'mapbox://styles/mapbox/satellite',
         //zoomControl: false,
         maxBounds: mapBounds,
         center: mapCenter,
@@ -25,40 +29,40 @@ function mapInit() {
 
     //var layerGroup = L.layerGroup().addTo(map);
 
-    // // Hardcoding the Fire Danger colors here for now
-    // var legend = 'CEFA Hourly Fire Danger'
-    // var values = [1, 2, 3, 4, 5, -99, 0]
-    // var colors = {
-    //     '1': '#00ff00',
-    //     '2': '#0000ff',
-    //     '3': '#ffff00',
-    //     '4': '#ffa500',
-    //     '5': '#ff0000',
-    //     '-99': '#bebebe',
-    //     '0': '#9acd32',
-    // };
-    // var labels = {
-    //     '1': 'Low [1]',
-    //     '2': 'Medium [2]',
-    //     '3': 'High [3]',
-    //     '4': 'Very High [4]',
-    //     '5': 'Extreme [5]',
-    //     '-99': 'Missing [-99]',
-    //     '0': 'No Staff Val [0]',
-    // }
-    // var nodata = -99;
+    // Hardcoding the Fire Danger values, colors, and labels here for now
+    var legend = 'CEFA Hourly Fire Danger'
+    var values = [1, 2, 3, 4, 5, -99, 0]
+    var colors = {
+        '1': '#00ff00',
+        '2': '#0000ff',
+        '3': '#ffff00',
+        '4': '#ffa500',
+        '5': '#ff0000',
+        '-99': '#bebebe',
+        '0': '#9acd32',
+    };
+    var labels = {
+        '1': 'Low [1]',
+        '2': 'Medium [2]',
+        '3': 'High [3]',
+        '4': 'Very High [4]',
+        '5': 'Extreme [5]',
+        '-99': 'Missing [-99]',
+        '0': 'No Staff Val [0]',
+    }
+    var nodata = -99;
 
-    // // Read in feature geometries from the GeoJSON file
-    // var featureNameField = 'NAME'
-    // var featureLayer = L.mapbox.featureLayer()
-    //     .loadURL('/data/test.geojson')
-    //     .addTo(map);
+    // Read in feature geometries from the GeoJSON file
+    var featureNameField = 'NAME'
+    var featureLayer = Mapbox.featureLayer()
+        .loadURL('/data/test.geojson')
+        .addTo(map);
 
-    // var featureData = {
-    //     'Kern': [0, 1, 2],
-    //     'Inyo': [1, 2, 3],
-    //     'Mono': [2, 3, 4]
-    // };
+    var featureData = {
+        'Kern': [0, 1, 2],
+        'Inyo': [1, 2, 3],
+        'Mono': [2, 3, 4]
+    };
 
     // // Style the features based on the index
     // function styleFeatures(i) {
@@ -96,12 +100,9 @@ function mapInit() {
     //       legendLabels.push(
     //         '<li><span class="swatch" style="background:' + colors[value] + ';"></span>' +
     //         labels[value] + '</li>');
-    //       // legendLabels.push(
-    //       //   '<span class="swatch" style="background:' + colors[value] + ';"></span>' +
-    //       //   '<label>' + labels[value] + '</label><br>');
     //     }
 
-    //     return '<strong>' + legend + '</strong>' +
+    //     return '<h3>' + legend + '</h3>' +
     //            '<ul class="legend labels">' + legendLabels.join('') + '</ul>';
     // }
     // map.legendControl

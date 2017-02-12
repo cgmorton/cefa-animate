@@ -5,19 +5,19 @@
 	<title>CEFA Hourly Fire Danger</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script> -->
-    <script src='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
 	<!-- <script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script> -->
 	<!-- <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' /> -->
-	<!-- <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script> -->
-	<!-- <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' /> -->
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script> -->
+    <!-- <link href='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' /> -->
+	<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" /> -->
+	<!-- <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script> -->
 </head>
 
 <body>
 	<link rel='stylesheet' type='text/css' href='/static/style.css'>
 
 	<div id='map'></div>
-    <div class='map-overlay' id='legend'></div>
+    <div id='legend'></div>
 
 	<!-- <div class='map-overlay top'> -->
 	<!-- <div class='map-overlay-inner'> -->
@@ -26,9 +26,15 @@
 	<!-- </div> -->
 	<!-- </div> -->
 
-	<script src='{{ url_for("static", filename="mapbox_gl.js") }}'></script>
-	<script>
-		mapInit();
-	</script>
+	<!-- <script src='{{ url_for("static", filename="mapbox.js") }}'></script> -->
+	<!-- <script src='{{ url_for("static", filename="mapboxgl.js") }}'></script> -->
+	<!-- <script src='{{ url_for("static", filename="leaflet.js") }}'></script> -->
+	<!-- <script>mapInit();</script> -->
+
+	<script src='{{ url_for("static", filename="googlemaps.js") }}'></script>
+	<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgjJOAjUXBr6h6cwTIL94SyXhD78xdVI4&callback=mapInit">
+    </script>
+
 </body>
 </html>

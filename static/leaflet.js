@@ -2,28 +2,40 @@ function mapInit() {
     var mapCenter = [37.5, -120];
     var mapZoom = 6;
 
-    // This will limit how far away the user can pan
-    var southWest = L.latLng(25, -140),
-        northEast = L.latLng(45, -100),
-        mapBounds = L.latLngBounds(southWest, northEast)
+    // // This will limit how far away the user can pan
+    // var southWest = L.latLng(25, -140),
+    //     northEast = L.latLng(45, -100),
+    //     mapBounds = L.latLngBounds(southWest, northEast)
+
+    var mapboxAccessToken = 'pk.eyJ1IjoiY2dtb3J0b24iLCJhIjoiY2luNmM3d3V4MGVuendrbHV2OW5wN3RuaSJ9.rjjVnT1cLUI2VwUm8yprSQ'
+    var map = L.map('map').setView(mapCenter, mapZoom);
 
     // Public Key
-    L.mapbox.accessToken = 'pk.eyJ1IjoiY2dtb3J0b24iLCJhIjoiY2luNmM3d3V4MGVuendrbHV2OW5wN3RuaSJ9.rjjVnT1cLUI2VwUm8yprSQ';
-    var map = L.mapbox.map('map', 'mapbox.streets', {
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 10,
+        // id: 'mapbox.basic',
         // id: 'mapbox.streets',
+        // id: 'mapbox.bright',
         // id: 'mapbox.light',
         // id: 'mapbox.dark',
-        // id: 'mapbox.satellite',
-        zoomControl: false,
-        maxBounds: mapBounds,
-        maxZoom: 10,
-        minZoom: 5,
-        fadeAnimation: true
-    });
-    map.setView(mapCenter, mapZoom);
-    new L.Control.Zoom({ position: 'topright' }).addTo(map);
+        id: 'mapbox.satellite',
+        accessToken: mapboxAccessToken
+    }).addTo(map);
 
-    //var layerGroup = L.layerGroup().addTo(map);
+    // // Public Key
+    // L.mapbox.accessToken = 'pk.eyJ1IjoiY2dtb3J0b24iLCJhIjoiY2luNmM3d3V4MGVuendrbHV2OW5wN3RuaSJ9.rjjVnT1cLUI2VwUm8yprSQ';
+    // var map = L.mapbox.map('map', 'mapbox.streets', {
+    //     zoomControl: false,
+    //     maxBounds: mapBounds,
+    //     maxZoom: 10,
+    //     minZoom: 5,
+    //     fadeAnimation: true
+    // });
+    // map.setView(mapCenter, mapZoom);
+    // new L.Control.Zoom({ position: 'topright' }).addTo(map);
+
+    // var layerGroup = L.layerGroup().addTo(map);
 
     // Hardcoding the Fire Danger values, colors, and labels here for now
     var legend = 'CEFA Hourly Fire Danger'
@@ -98,8 +110,7 @@ function mapInit() {
     //         labels[value] + '</li>');
     //     }
 
-    //     return '<h3>' + legend + '</h3>' +
-    //            '<ul class="legend labels">' + legendLabels.join('') + '</ul>';
+    //     return '<h3>' + legend + '</h3>' + legendLabels.join('');
     // }
     // map.legendControl
     //     .addLegend(buildLegendHTML())
