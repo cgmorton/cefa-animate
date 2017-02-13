@@ -16,7 +16,9 @@ If you click on a polygon, a small info window should appear at the position cli
 
 Need to link slider position to an actual date/time and then update the slider label with this value.
 
-## Dependencies
+## AppEngine
+
+#### Dependencies
 
 Before running or deploying this application, install the dependencies to the "lib" folder using pip:
 ```

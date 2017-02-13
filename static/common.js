@@ -40,7 +40,7 @@ var default_i = 0;
 var min_i = 0;
 var max_i = 11;
 $('#slider').slider({value: default_i, min: min_i, max: max_i, step: 1,});
-$('#slider').on('slidechange', function( event, ui ) {
+$('#slider').on('slide', function( event, ui ) {
     setFeatureStyle(ui.value);
     $('#timeLabel').html(ui.value)} );
 
