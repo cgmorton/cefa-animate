@@ -5,8 +5,10 @@
 	<title>CEFA Hourly Fire Danger</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 	<!-- <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script> -->
@@ -24,25 +26,27 @@
 	<div id='map'></div>
 	<div id='legend' class='map-overlay'></div>
 	<div id='controls' class='map-overlay'>
-		<div id='control-buttons'>
+		<div id='btn-container'>
 			<!-- <div class="btn-group btn-group" role="group"> -->
 			<!-- onclick="this.blur();" -->
-			<button type="button" class="btn btn-default btn-space">
+			<button type="button" class="btn btn-default">
 			  <span class="glyphicon glyphicon-step-backward"></span>
 			</button>
-			<button type="button" class="btn btn-default btn-space">
+			<button type="button" class="btn btn-default">
 			  <span class="glyphicon glyphicon-play"></span>
 			</button>
-			<button type="button" class="btn btn-default btn-space">
+			<button type="button" class="btn btn-default">
 			  <span class="glyphicon glyphicon-pause"></span>
 			</button>
-			<button type="button" class="btn btn-default btn-space">
+			<button type="button" class="btn btn-default">
 			  <span class="glyphicon glyphicon-step-forward"></span>
 			</button>
 			<!-- </div> -->
 			<label id='timeLabel'>0</label>
 		</div>
-		<input id='timeSlider' type='range' min=0 max=11 value=0 />
+		<div id="slider-container">
+			<div id="slider"></div>
+		</div>
 	</div>
 	<div id='info-box' class='map-overlay'>?</div>
 
@@ -53,7 +57,7 @@
 
 	<script src='{{ url_for("static", filename="googlemaps.js") }}'></script>
 	<!-- <script async defer -->
-	<script 
+	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgjJOAjUXBr6h6cwTIL94SyXhD78xdVI4&callback=mapInit">
 	</script>
 

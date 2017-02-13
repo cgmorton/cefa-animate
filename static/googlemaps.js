@@ -1,6 +1,6 @@
 function mapInit() {
     var mapCenter = {lat: 37.5, lng: -120};
-    var mapZoom = 7;
+    var mapZoom = 6;
 
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: mapZoom,
@@ -44,50 +44,27 @@ function mapInit() {
     //console.log(feature.getProperty('POINTS'));
 
 
-    // Set the control box position (slider, play, pause, etc.)
+    // Set the control box (slider, play, pause, etc.) on the map
     var controls = document.getElementById('controls');
     map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(controls);
 
-    // Slider control
-    // Get the default slider position
-    // I could move the slider html definition from the index.html to here
-    var time_i = parseInt(document.getElementById('timeSlider').value)
+
+    // Set the default slider position
+    var default_i = 0
+    // Set the slider control
+    $( function() {
+        $('#slider').slider({value: default_i, min: 0, max: 11, step: 1});
+    });
 
 
-    // Function for setting the initial/default feature style
-    // Could featureData, colors, i, featureNameField, nodata be passed in?
-    function setStyle(feature){
-        //var layer_color = fd_colors[fd_nodata]
-        //console.log(feature)
-        var fdra = feature.getProperty(featureNameField);
-        var i = 0;
-
-        // If the value is not set, use the default value
-        if (fdra in featureData) {
-            var ftr_color = fd_colors[featureData[fdra][i]];
-        } else {
-            var ftr_color = fd_colors[fd_nodata];
-        }
-
-        return {
-            fillColor: ftr_color,
-            fillOpacity: 0.80,
-            strokeWeight: 0.5
-        };
-    }
-
-
-    // Read feature values from a separate json file
-    // Set default feature style from values
-    var featureData;
-    $.getJSON('/data/data.json', function(json) {
-        featureData = json;
-        map.data.setStyle(function (feature){
+    function setFeatureStyle(slider_i) {
+        map.data.setStyle(function setStyle(feature){
             var fdra = feature.getProperty(featureNameField);
 
             // If the value is not set, use the default value
-            if (fdra in featureData) {
-                var ftr_color = fd_colors[featureData[fdra][0]];
+            //if (fdra in featureData) {
+            if (fdra in featureData & slider_i in featureData[fdra]) {
+                var ftr_color = fd_colors[featureData[fdra][slider_i]];
             } else {
                 var ftr_color = fd_colors[fd_nodata];
             }
@@ -98,7 +75,48 @@ function mapInit() {
                 strokeWeight: 0.5
             };
         });
+    };
+
+
+    // Link the slider to the features
+    $('#slider').on('slide', function( event, ui ) {
+        $('#timeLabel').html(ui.value);
+        setFeatureStyle(ui.value)
     });
+
+
+    // Read feature values from a separate json file
+    // Set default feature style from values
+    var featureData;
+    $.getJSON('/data/data.json', function(json) {
+        featureData = json;
+        setFeatureStyle(default_i)
+    });
+
+
+    // // Update the feature styling based on the slider position
+    // document.getElementById('slider').addEventListener('input', function(e) {
+    //     slider_i = parseInt(e.target.value, 10);
+    //     var timeLabel = document.getElementById('timeLabel')
+    //     timeLabel.textContent = slider_i;
+    //     map.data.setStyle(function setStyle(feature){
+    //         var fdra = feature.getProperty(featureNameField);
+
+    //         // If the value is not set, use the default value
+    //         //if (fdra in featureData) {
+    //         if (fdra in featureData & slider_i in featureData[fdra]) {
+    //             var ftr_color = fd_colors[featureData[fdra][slider_i]];
+    //         } else {
+    //             var ftr_color = fd_colors[fd_nodata];
+    //         }
+
+    //         return {
+    //             fillColor: ftr_color,
+    //             fillOpacity: 0.80,
+    //             strokeWeight: 0.5
+    //         };
+    //     });
+    // });
 
 
     // Set the legend colors and labels
@@ -109,7 +127,7 @@ function mapInit() {
     for (var i = 0; i < fd_values.length; i++) {
         fd_value = fd_values[i]
         var row = document.createElement('li');
-        row.innerHTML = 
+        row.innerHTML =
             '<span class="swatch" style="background:' + fd_colors[fd_value] + ';"></span>' +
             '<label>' + fd_labels[fd_value] + '</label>';
         legend.appendChild(row);
@@ -151,28 +169,15 @@ function mapInit() {
     });
 
 
-    // Update the feature styling based on the slider position
-    document.getElementById('timeSlider').addEventListener('input', function(e) {
-        time_i = parseInt(e.target.value, 10);
-        var timeLabel = document.getElementById('timeLabel')
-        timeLabel.textContent = time_i;
-        map.data.setStyle(function setStyle(feature){
-            var fdra = feature.getProperty(featureNameField);
-
-            // If the value is not set, use the default value
-            //if (fdra in featureData) {
-            if (fdra in featureData & time_i in featureData[fdra]) {
-                var ftr_color = fd_colors[featureData[fdra][time_i]];
-            } else {
-                var ftr_color = fd_colors[fd_nodata];
-            }
-
-            return {
-                fillColor: ftr_color,
-                fillOpacity: 0.80,
-                strokeWeight: 0.5
-            };
-        });
+    // Keep map position centered when window resizes
+    google.maps.event.addDomListener(window, 'resize', function() {
+        var center = map.getCenter();
+        google.maps.event.trigger(map, "resize");
+        map.setCenter(center);
     });
-
 }
+
+
+//google.maps..event.addDomListener(window, 'load', initialize);
+
+

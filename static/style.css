@@ -12,37 +12,32 @@ body {
 
 .map-overlay {
     background: #fff;
-    border: 2px solid #000;
+    border: 1.5px solid #000;
     border-radius: 4px;
     margin: 20px;
 }
 
 #controls {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 0px;
-    padding-bottom: 10px;
+    padding: 10px;
     width: 300px;
 }
-#controls #control-buttons {
+#controls #btn-container {
     display: block;
     margin: auto;
-    padding: 10px;
+    padding-bottom: 12px;
 }
 #controls .btn {
     background: #eeeeee;
+    margin-right: 4px;
 }
 #controls .btn:focus {
   outline: none;
 }
-#controls .btn-space {
-    margin-right: 4px;
-}
-#controls #timeSlider {
+#controls #slider {
     display: block;
-    width: 95%;
+    background: #eeeeee;
+    width: 100%;
     margin: auto;
-    padding: 6px;
 }
 
 #legend {
