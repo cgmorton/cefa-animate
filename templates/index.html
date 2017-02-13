@@ -17,14 +17,13 @@
 	<link rel='stylesheet' type='text/css' href='/static/style.css'>
 
 	<div id='map'></div>
-    <div id='legend'></div>
-
-	<!-- <div class='map-overlay top'> -->
-	<!-- <div class='map-overlay-inner'> -->
-	<!-- <h1>CEFA/CWA Experimental California Hourly Fire Danger</h1> -->
-	<!-- <div class='map-legend'> -->
-	<!-- </div> -->
-	<!-- </div> -->
+    <div id='legend' class='map-overlay'></div>
+    <div id='controls' class='map-overlay'>
+    	<h2>Hour Control</h2>
+    	<label id='timeLabel'></label>
+    	<input id='timeSlider' type='range' min=0 max=11 value=0 />
+    </div>
+    <div id='info-box' class='map-overlay'>?</div>
 
 	<!-- <script src='{{ url_for("static", filename="mapbox.js") }}'></script> -->
 	<!-- <script src='{{ url_for("static", filename="mapboxgl.js") }}'></script> -->
@@ -32,7 +31,8 @@
 	<!-- <script>mapInit();</script> -->
 
 	<script src='{{ url_for("static", filename="googlemaps.js") }}'></script>
-	<script async defer
+	<!-- <script async defer -->
+	<script 
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgjJOAjUXBr6h6cwTIL94SyXhD78xdVI4&callback=mapInit">
     </script>
 

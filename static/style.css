@@ -10,14 +10,31 @@ body {
     width: 100%;
 }
 
+.map-overlay {
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 4px;
+    margin: 20px;
+}
+
+#controls {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    width: 300px;
+}
+#controls #timeSlider {
+    display: block;
+    width: 95%;
+    margin: auto;
+}
+
 #legend {
     font-family: Arial, sans-serif;
-    background: #fff;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 4px;
-    margin: 20px;
-    border: 2px solid #000;
 }
 #legend li {
     list-style: none;
@@ -35,5 +52,15 @@ body {
     border: 1px solid #999;
 }
 
+/* Info box showing selected FDRA number */
+#info-box {
+    bottom: 30px;
+    padding: 10px;
+    position: absolute;
+    left: 30px;
+}
+
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display: block;}
+.show {
+    display: block;
+}
