@@ -24,10 +24,22 @@ body {
     padding-bottom: 10px;
     width: 300px;
 }
+#controls #control-buttons {
+    display: block;
+    margin: auto;
+    padding: 10px;
+}
+#controls .btn {
+    background: #eeeeee;
+}
+#controls .btn:focus {
+  outline: none;
+}
 #controls #timeSlider {
     display: block;
     width: 95%;
     margin: auto;
+    padding: 6px;
 }
 
 #legend {

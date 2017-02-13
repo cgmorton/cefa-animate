@@ -3,12 +3,17 @@
 <head>
 	<meta charset=utf-8 />
 	<title>CEFA Hourly Fire Danger</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 	<!-- <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script> -->
 	<!-- <script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script> -->
 	<!-- <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' /> -->
-    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script> -->
-    <!-- <link href='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' /> -->
+	<!-- <script src='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script> -->
+	<!-- <link href='https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' /> -->
 	<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" /> -->
 	<!-- <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script> -->
 </head>
@@ -17,13 +22,29 @@
 	<link rel='stylesheet' type='text/css' href='/static/style.css'>
 
 	<div id='map'></div>
-    <div id='legend' class='map-overlay'></div>
-    <div id='controls' class='map-overlay'>
-    	<h2>Hour Control</h2>
-    	<label id='timeLabel'></label>
-    	<input id='timeSlider' type='range' min=0 max=11 value=0 />
-    </div>
-    <div id='info-box' class='map-overlay'>?</div>
+	<div id='legend' class='map-overlay'></div>
+	<div id='controls' class='map-overlay'>
+		<div id='control-buttons'>
+			<!-- <div class="btn-group btn-group" role="group"> -->
+			<!-- onclick="this.blur();" -->
+			<button type="button" class="btn btn-default btn">
+			  <span class="glyphicon glyphicon-step-backward"></span>
+			</button>
+			<button type="button" class="btn btn-default btn">
+			  <span class="glyphicon glyphicon-play"></span>
+			</button>
+			<button type="button" class="btn btn-default btn">
+			  <span class="glyphicon glyphicon-pause"></span>
+			</button>
+			<button type="button" class="btn btn-default btn" onclick="this.blur();">
+			  <span class="glyphicon glyphicon-step-forward"></span>
+			</button>
+			<!-- </div> -->
+			<label id='timeLabel'>0</label>
+		</div>
+		<input id='timeSlider' type='range' min=0 max=11 value=0 />
+	</div>
+	<div id='info-box' class='map-overlay'>?</div>
 
 	<!-- <script src='{{ url_for("static", filename="mapbox.js") }}'></script> -->
 	<!-- <script src='{{ url_for("static", filename="mapboxgl.js") }}'></script> -->
@@ -33,8 +54,8 @@
 	<script src='{{ url_for("static", filename="googlemaps.js") }}'></script>
 	<!-- <script async defer -->
 	<script 
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgjJOAjUXBr6h6cwTIL94SyXhD78xdVI4&callback=mapInit">
-    </script>
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgjJOAjUXBr6h6cwTIL94SyXhD78xdVI4&callback=mapInit">
+	</script>
 
 </body>
 </html>
