@@ -29,16 +29,16 @@
 		<div id='btn-container'>
 			<!-- <div class="btn-group btn-group" role="group"> -->
 			<!-- onclick="this.blur();" -->
-			<button type="button" class="btn btn-default">
+			<button type="button" class="btn btn-md" id="step-backward-btn">
 			  <span class="glyphicon glyphicon-step-backward"></span>
 			</button>
-			<button type="button" class="btn btn-default">
+			<button type="button" class="btn btn-md" id="play-btn">
 			  <span class="glyphicon glyphicon-play"></span>
 			</button>
-			<button type="button" class="btn btn-default">
+			<button type="button" class="btn btn-md" id="pause-btn">
 			  <span class="glyphicon glyphicon-pause"></span>
 			</button>
-			<button type="button" class="btn btn-default">
+			<button type="button" class="btn btn-md" id="step-forward-btn">
 			  <span class="glyphicon glyphicon-step-forward"></span>
 			</button>
 			<!-- </div> -->
@@ -55,7 +55,8 @@
 	<!-- <script src='{{ url_for("static", filename="leaflet.js") }}'></script> -->
 	<!-- <script>mapInit();</script> -->
 
-	<script src='{{ url_for("static", filename="googlemaps.js") }}'></script>
+	<script text='text/javascript' src='{{ url_for("static", filename="common.js") }}'></script>
+	<script text='text/javascript' src='{{ url_for("static", filename="googlemaps.js") }}'></script>
 	<!-- <script async defer -->
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgjJOAjUXBr6h6cwTIL94SyXhD78xdVI4&callback=mapInit">
