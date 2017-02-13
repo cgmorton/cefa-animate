@@ -1,11 +1,13 @@
 function mapInit() {
     var mapCenter = {lat: 37.5, lng: -120};
-    var mapZoom = 6;
+    var mapZoom = 7;
 
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: mapZoom,
-        center: mapCenter
-        //mapTypeId: 'terrain'
+        center: mapCenter,
+        mapTypeId: 'satellite',
+        //mapTypeId: 'terrain',
+        streetViewControl: false
     });
 
     // Hardcoding the Fire Danger values, colors, and labels here for now
@@ -101,7 +103,7 @@ function mapInit() {
 
     // Set the legend colors and labels
     var legend = document.getElementById('legend');
-    var title = document.createElement('h2');
+    var title = document.createElement('h4');
     title.innerHTML = legend_title;
     legend.appendChild(title);
     for (var i = 0; i < fd_values.length; i++) {

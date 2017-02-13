@@ -35,6 +35,9 @@ body {
 #controls .btn:focus {
   outline: none;
 }
+#controls .btn-space {
+    margin-right: 4px;
+}
 #controls #timeSlider {
     display: block;
     width: 95%;
@@ -50,9 +53,10 @@ body {
 }
 #legend li {
     list-style: none;
-    margin-left: 0;
     line-height: 20px;
+    margin-left: 0;
     margin-bottom: 10px;
+    font-size: 12px;
 }
 #legend .swatch {
     display: block;
