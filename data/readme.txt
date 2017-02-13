@@ -9,3 +9,6 @@ Added the extra GeoJSON key/values (properties, type, geometry, etc.).
 The order of the coordinates needs to be reversed and the first point needs to be duplicated at the end.
 The python script geojson_reverser.py should take care of this (but the file names are hardcoded).
 Tested final geojson at: http://geojsonlint.com/
+
+In FDRA 508, there is a weird straight line out in the ocean.
+Removed the following 4 points: [-120.666, 34.91523], [-120.6658, 34.9152], [-120.6658, 34.91538], [-120.666, 34.91523]
